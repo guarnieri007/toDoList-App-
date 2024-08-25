@@ -1,10 +1,24 @@
-import { Header } from './components/Header';
-import { MenuBar } from './components/menu-bar';
+import { useState } from 'react';
+import { Header } from './components/header';
+import { ListItem } from './interfaces';
+import { Listing } from './components/listing';
+import { MainForm } from './components/mainForm';
 
 function App() {
+  const [todoList, setTodoList] = useState<ListItem[]>([]);
   return (
     <>
-      <MenuBar />
+      <Header />
+
+      <MainForm
+        setTodoList={setTodoList}
+        todoList={todoList}
+      />
+
+      <Listing
+        listItems={todoList}
+        setListItems={setTodoList}
+      />
 
     </>
   );
